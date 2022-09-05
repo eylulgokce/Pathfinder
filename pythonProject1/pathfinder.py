@@ -1,6 +1,4 @@
-def print_path(end_node, neighbour_node):
-    print("Following is the Dijkstra algorithm:")
-
+def print_dijkstra_path(end_node, neighbour_node):
     path = ""
     path = end_node + "->" + path
     while True:
@@ -10,6 +8,7 @@ def print_path(end_node, neighbour_node):
             break
         path = end_node + "->" + path
 
+    print("Following is the Dijkstra algorithm:")
     print("Path (Dijsktra) =", path[:-2])
     return path[:-2]
 
@@ -42,41 +41,38 @@ def dijkstra(graph, start_node, end_node):
                 path[node] = new_path
                 neighbour_node[node] = curr
 
-    shortest_path = print_path(end_node, neighbour_node)
-    return shortest_path
+    return print_dijkstra_path(end_node, neighbour_node)
 
 
+# breadth-first search
 def bfs(graph, start_node, end_node):
     visited = []
     queue = [[start_node]]
 
     if start_node == end_node:
-        print("Same Node")
+        print("Same Node!")
         return
 
     while queue:
         path = queue.pop(0)
         node = path[-1]
 
-        # if current node is not visited
+        # If current node is not visited
         if node not in visited:
             neighbours = graph[node]
 
-            # iterate over the neighbours of the node
+            # Iterate over the neighbours of the node
             for neighbour in neighbours:
                 new_path = list(path)
                 new_path.append(neighbour)
                 queue.append(new_path)
 
-                # nif neighbour node is destination
+                # If neighbour node is destination
                 if neighbour == end_node:
                     print("Following is the Breadth-First Search:")
-                    print("Path (BFS) = ", *new_path)
+                    print("Path (BFS) = ", *new_path)  # print list as string
                     return new_path
             visited.append(node)
 
     print("Connecting path doesn't exist!")
     return
-
-
-
