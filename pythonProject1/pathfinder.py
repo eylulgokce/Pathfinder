@@ -26,13 +26,14 @@ def dijkstra(graph, start_node, end_node):
     path[start_node] = 0
 
     while unvisited_nodes:
-        key_min = unvisited_nodes[0]
-        min_val = path[key_min]
+        node_min = unvisited_nodes[0]
+        min_cost = path[node_min]
+
         for i in range(1, len(unvisited_nodes)):
-            if path[unvisited_nodes[i]] < min_val:
-                key_min = unvisited_nodes[i]
-                min_val = path[key_min]
-        curr = key_min
+            if path[unvisited_nodes[i]] < min_cost:
+                node_min = unvisited_nodes[i]
+                min_cost = path[node_min]
+        curr = node_min
         unvisited_nodes.remove(curr)
 
         for node in graph[curr]:

@@ -1,7 +1,6 @@
 import unittest
 import pathfinder
 
-
 class TestStringMethods(unittest.TestCase):
 
     def test_dijkstra(self):
